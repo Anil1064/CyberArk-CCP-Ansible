@@ -16,7 +16,7 @@
 
     - name: Retrieve REST API Service Account for Onboarding to CyberArk
       cyberark_credential:
-        api_base_url: "https:/comp01.cybr.com"
+        api_base_url: "https://comp01.cybr.com"
         validate_certs: no
         client_cert: ""
         client_key: "" 
