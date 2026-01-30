@@ -4,7 +4,7 @@
   tasks:
     - name: Retrieve SSH Private Key for Login from CyberArk
       cyberark_credential:
-        api_base_url: "https://pvwa.192.168.3.102.xip.io"
+        api_base_url: "https://comp01.cybr.com"
         validate_certs: no
         client_cert: ""
         client_key: "" 
@@ -16,7 +16,7 @@
 
     - name: Retrieve REST API Service Account for Onboarding to CyberArk
       cyberark_credential:
-        api_base_url: "https://pvwa.192.168.3.102.xip.io"
+        api_base_url: "https:/comp01.cybr.com"
         validate_certs: no
         client_cert: ""
         client_key: "" 
@@ -148,7 +148,7 @@
 
     - name: Authenticate to CyberArk Web Services
       cyberark_authentication:
-        api_base_url: "https://pvwa.192.168.3.102.xip.io"
+        api_base_url: "https://comp01.cybr.com"
         validate_certs: no
         username: "{{ cyberark_rest_user }}"
         password: "{{ cyberark_rest_pass }}"
@@ -160,7 +160,7 @@
 
     - name: Onboard MySQL Local User to CyberArk EPV
       uri:
-        url: https://pvwa.192.168.3.102.xip.io/PasswordVault/api/Accounts/
+        url: https://comp01.cybr.com/PasswordVault/api/Accounts/
         headers:
           Content-Type: application/json
           Authorization: "{{ cyberark_authn_token }}"
@@ -168,7 +168,7 @@
         status_code: 201
         body:
           name: "MYSQL-DEMO-USER"
-          address: "rhel01.192.168.3.104.xip.io"
+          address: "rhel7.cybr.com"
           userName: "{{ mysql_username }}"
           platformId: "MySQL"
           safeName: "D-MYSQL-LOCAL-USERS"
