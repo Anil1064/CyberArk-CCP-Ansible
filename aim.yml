@@ -3,7 +3,7 @@
 
   tasks:
     - name: Retrieve SSH Private Key for Login from CyberArk
-      cyberark_credential:
+      cyberark_key_response:
         api_base_url: "https://comp01.cybr.com"
         validate_certs: no
         client_cert: ""
@@ -15,7 +15,7 @@
       no_log: no
 
     - name: Retrieve REST API Service Account for Onboarding to CyberArk
-      cyberark_credential:
+      cyberark_user_response:
         api_base_url: "https://comp01.cybr.com"
         validate_certs: no
         client_cert: ""
