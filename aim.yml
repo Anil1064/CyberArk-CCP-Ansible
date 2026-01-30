@@ -1,9 +1,10 @@
 ---
 - hosts: localhost
-
+  collections:
+    - cyberark.pas
   tasks:
     - name: Retrieve SSH Private Key for Login from CyberArk
-      cyberark_credential:
+      cyberark.pas.cyberark_credential:
         api_base_url: "https://comp01.cybr.com"
         validate_certs: no
         client_cert: ""
@@ -15,7 +16,7 @@
       no_log: no
 
     - name: Retrieve REST API Service Account for Onboarding to CyberArk
-      cyberark_credential:
+      cyberark.pas.cyberark_credential:
         api_base_url: "https://comp01.cybr.com"
         validate_certs: no
         client_cert: ""
@@ -147,7 +148,7 @@
         state: present
 
     - name: Authenticate to CyberArk Web Services
-      cyberark_authentication:
+      cyberark.pas.cyberark_authentication:
         api_base_url: "https://comp01.cybr.com"
         validate_certs: no
         username: "{{ cyberark_rest_user }}"
@@ -180,7 +181,7 @@
         validate_certs: no
 
     - name: Logoff from CyberArk Web Services
-      cyberark_authentication:
+      cyberark.pas.cyberark_authentication:
         state: absent 
         cyberark_session: "{{ cyberark_session }}"
 
